@@ -18,7 +18,7 @@ setuptools.setup(
     name="kgpr_core",
     version=__version__,
     author="Rangel Reale",
-    author_email="rangelspam@gmail.com",
+    author_email="rangelreale@gmail.com",
     description="KubraGen Providers: Core",
     long_description=long_description,
     long_description_content_type="text/markdown",
