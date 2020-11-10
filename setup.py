@@ -23,7 +23,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RangelReale/kgpr_core",
-    packages=setuptools.find_packages(),
+    packages=[
+        'kgpr_core', 'kgpr_core.amazon.eks', 'kgpr_core.digitalocean.kubernetes', 'kgpr_core.google.gke',
+        'kgpr_core.k3d.generic', 'kgpr_core.kind.generic'
+    ],
     install_requires=INSTALL_REQUIRES,
     classifiers=[
         "Programming Language :: Python :: 3",
