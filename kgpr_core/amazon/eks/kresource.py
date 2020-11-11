@@ -26,18 +26,26 @@ class KRPersistentVolumeProfile_AWSElasticBlockStore(KRPersistentVolumeProfile):
         }
         if self.storageclass is not None:
             pvdata['spec']['storageClassName'] = self.storageclass
+        is_static = False
         if config is not None:
             if 'name' in config:
                 pvdata['metadata']['name'] = config['name']
             if 'csi' in config:
                 if 'volumeHandle' in config['csi']:
+                    is_static = True
                     pvdata['spec']['awsElasticBlockStore']['volumeID'] = config['csi']['volumeHandle']
                 if 'fsType' in config['csi']:
                     pvdata['spec']['awsElasticBlockStore']['fsType'] = config['csi']['fsType']
                 if 'readOnly' in config['csi']:
                     pvdata['spec']['awsElasticBlockStore']['readOnly'] = config['csi']['readOnly']
 
-        return Merger.merge(pvdata, merge_config if merge_config is not None else {})
+        ret = Merger.merge(pvdata, merge_config if merge_config is not None else {})
+
+        if is_static:
+            # Static storage must set class name as ''
+            ret['spec']['storageClassName'] = ''
+
+        return ret
 
 
 class KRPersistentVolumeProfile_CSI_AWSEBS(KRPersistentVolumeProfile_CSI):
