@@ -27,6 +27,8 @@ setuptools.setup(
         'kgpr_core', 'kgpr_core.amazon.eks', 'kgpr_core.digitalocean.kubernetes', 'kgpr_core.google.gke',
         'kgpr_core.k3d.generic', 'kgpr_core.kind.generic'
     ],
+    package_data={'kgpr_core': ['py.typed']},
+    zip_safe=False,
     install_requires=INSTALL_REQUIRES,
     classifiers=[
         "Programming Language :: Python :: 3",
