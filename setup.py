@@ -27,7 +27,14 @@ setuptools.setup(
         'kgpr_core', 'kgpr_core.amazon.eks', 'kgpr_core.digitalocean.kubernetes', 'kgpr_core.google.gke',
         'kgpr_core.k3d.generic', 'kgpr_core.kind.generic'
     ],
-    package_data={'kgpr_core': ['py.typed']},
+    package_data={
+        'kgpr_core': ['py.typed'],
+        'kgpr_core.amazon.eks': ['py.typed'],
+        'kgpr_core.digitalocean.kubernetes': ['py.typed'],
+        'kgpr_core.google.gke': ['py.typed'],
+        'kgpr_core.k3d.generic': ['py.typed'],
+        'kgpr_core.kind.generic': ['py.typed'],
+    },
     zip_safe=False,
     install_requires=INSTALL_REQUIRES,
     classifiers=[
