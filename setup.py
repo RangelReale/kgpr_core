@@ -23,17 +23,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RangelReale/kgpr_core",
-    packages=[
-        'kgpr_core', 'kgpr_core.amazon.eks', 'kgpr_core.digitalocean.kubernetes', 'kgpr_core.google.gke',
-        'kgpr_core.k3d.generic', 'kgpr_core.kind.generic'
-    ],
+    packages=setuptools.find_packages(),
     package_data={
-        'kgpr_core': ['py.typed'],
-        'kgpr_core.amazon.eks': ['py.typed'],
-        'kgpr_core.digitalocean.kubernetes': ['py.typed'],
-        'kgpr_core.google.gke': ['py.typed'],
-        'kgpr_core.k3d.generic': ['py.typed'],
-        'kgpr_core.kind.generic': ['py.typed'],
+        x: ['py.typed'] for x in setuptools.find_packages()
     },
     zip_safe=False,
     install_requires=INSTALL_REQUIRES,
